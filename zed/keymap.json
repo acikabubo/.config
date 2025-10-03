@@ -1,0 +1,11 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-up": "editor::DuplicateLineUp",
+      "ctrl-alt-down": "editor::DuplicateLineDown",
+      "ctrl-u": "editor::DeleteToBeginningOfLine",
+      "ctrl-k": "editor::DeleteToEndOfLine"
+    }
+  }
+]
