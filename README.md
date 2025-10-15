@@ -1,5 +1,27 @@
 # Configuration Files
 
+## 📝 VS Code Editor
+
+| Type | File |
+|------|------|
+| Settings | [settings.json](vscode/settings.json) |
+| Keybindings | [keybindings.json](vscode/keybindings.json) |
+| Snippets | [python.json](vscode/snippets/python.json) · [rust.json](vscode/snippets/rust.json) |
+| Extensions | [extensions-list.txt](vscode/extensions-list.txt)
+
+### File locations
+```
+~/.config/Code/User/settings.json
+~/.config/Code/User/keybindings.json
+~/.config/Code/User/snippets/python.json
+~/.config/Code/User/snippets/rust.json
+```
+
+To list all installed extensions execute:
+```bash
+code --list-extensions
+```
+
 ## 📝 Zed Editor
 
 ### Configuration Files

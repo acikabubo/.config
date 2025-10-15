@@ -1,0 +1,339 @@
+{
+    // ============================================================================
+    // EDITOR - General
+    // ============================================================================
+    "editor.cursorBlinking": "expand",
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 3,
+    "editor.fontFamily": "'Fira Code', 'Cascadia Code', 'monospace'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.formatOnSaveMode": "file",
+    "editor.guides.indentation": true,
+    "editor.inlayHints.padding": true,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.language.brackets": [],
+    "editor.largeFileOptimizations": false,
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderFinalNewline": "dimmed",
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    "editor.renderWhitespace": "none",
+    "editor.roundedSelection": true,
+    "editor.rulers": [
+        {
+            "color": "#b5f5b5",
+            "column": 72
+        },
+        {
+            "color": "#f8cfcf",
+            "column": 79
+        }
+    ],
+    "editor.scrollBeyondLastLine": false,
+    "editor.smoothScrolling": true,
+    "editor.snippetSuggestions": "top",
+    "editor.stickyScroll.enabled": false,
+    "editor.tabCompletion": "on",
+    "editor.codeActionsOnSave": {},
+
+    // ============================================================================
+    // EDITOR - Language Specific
+    // ============================================================================
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.inlayHints.enabled": "offUnlessPressed",
+        "diffEditor.ignoreTrimWhitespace": false
+    },
+    "[go]": {
+        "editor.formatOnSave": true
+    },
+    "[rust]": {
+        "editor.formatOnType": true
+    },
+
+    // ============================================================================
+    // FILES
+    // ============================================================================
+    "files.associations": {
+        "*.partial": "json",
+        "*.schema": "json",
+        "*.ui.schema": "json",
+        "*.toml": "toml"
+    },
+    "files.exclude": {
+        "": true,
+        "**/*.pyc": true,
+        "**/.coverage": true,
+        "**/.directory": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.noseids": true,
+        "**/.pytest_cache": true,
+        "**/.svn": true,
+        "**/__pycache__": true,
+        "**/bin": false,
+        "**/celerybeat-schedule": true,
+        "**/cover": true,
+        "**/pg": true,
+        "*.egg-info": true,
+        "*.sublime-project": true,
+        "*.sublime-workspace": true,
+        ".skjold_cache": true,
+        "env": true,
+        "env3": true,
+        "htmlcov": true,
+        "include": true,
+        "log": true,
+        "man": true,
+        "pip-selfcheck.json": true,
+        "project": true,
+        "share": true,
+        "test_*.sqlite3": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
+    // ============================================================================
+    // WORKBENCH
+    // ============================================================================
+    "workbench.colorCustomizations": {
+        "terminal.background": "#383737",
+        "terminal.foreground": "#00FD61"
+    },
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.editorAssociations": {
+        "*.html": "default",
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.enableExperiments": false,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.settings.applyToAllProfiles": [
+        "cSpell.enableFiletypes",
+        "cSpell.spellCheckOnlyWorkspaceFiles"
+    ],
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "workbench.tree.indent": 15,
+
+    // ============================================================================
+    // EXPLORER
+    // ============================================================================
+    "explorer.confirmDragAndDrop": false,
+    "explorer.openEditors.visible": 1,
+
+    // ============================================================================
+    // DIFF EDITOR
+    // ============================================================================
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    // ============================================================================
+    // BREADCRUMBS
+    // ============================================================================
+    "breadcrumbs.enabled": true,
+
+    // ============================================================================
+    // TERMINAL
+    // ============================================================================
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "monospace",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.inheritEnv": false,
+
+    // ============================================================================
+    // PYTHON
+    // ============================================================================
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnknownVariableType": "none",
+        "reportUnknownArgumentType": "none",
+        "reportUnknownMemberType": "none",
+        "reportUnknownParameterType": "none",
+        "reportMissingParameterType": "none",
+        "reportUntypedFunctionDecorator": "none",
+        "reportMissingTypeStubs": "none"
+    },
+    "python.analysis.fixAll": [
+        "source.unusedImports"
+    ],
+    "python.analysis.inlayHints.callArgumentNames": "all",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.condaPath": "conda",
+    "python.languageServer": "Pylance",
+    "python.testing.pytestArgs": [
+        "--exitfirst",
+        "--verbose"
+    ],
+    "python.testing.pytestEnabled": false,
+
+    // ============================================================================
+    // PYTHON - Linters & Formatters
+    // ============================================================================
+    "flake8.args": [
+        "--disable=E128"
+    ],
+    "pylint.args": [
+        "--disable=C0114,C0115,C0116,W1203"
+    ],
+    "pylint.lintOnChange": true,
+    "ruff.lineLength": 79,
+    "mypy-type-checker.reportingScope": "workspace",
+    "mypy-type-checker.args": [
+        "--import-untyped"
+    ],
+
+    // ============================================================================
+    // GO
+    // ============================================================================
+    "go.delveConfig": {
+        "apiVersion": 2,
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxArrayValues": 64,
+            "maxStringLen": 64,
+            "maxStructFields": -1,
+            "maxVariableRecurse": 1
+        },
+        "showGlobalVariables": false
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "go.useLanguageServer": true,
+    "gopls": {
+        "ui.semanticTokens": true
+    },
+
+    // ============================================================================
+    // RUST
+    // ============================================================================
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+
+    // ============================================================================
+    // GIT & GITLENS
+    // ============================================================================
+    "git.autofetch": false,
+    "git.ignoreMissingGitWarning": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false
+    },
+    "gitlens.views.scm.grouped.views": {
+        "commits": true,
+        "branches": true,
+        "remotes": true,
+        "stashes": false,
+        "tags": true,
+        "worktrees": true,
+        "contributors": true,
+        "fileHistory": false,
+        "repositories": true,
+        "searchAndCompare": false,
+        "launchpad": false
+    },
+
+    // ============================================================================
+    // PROJECT MANAGER
+    // ============================================================================
+    "projectManager.git.baseFolders": [
+        "~/development/projects",
+        "~/development/private"
+    ],
+    "projectManager.git.ignoredFolders": [
+        "log",
+        "logs"
+    ],
+    "projectManager.git.maxDepthRecursion": 4,
+    "projectManager.groupList": true,
+    "projectManager.showProjectNameInStatusBar": true,
+    "projectManager.sortList": "Name",
+    "projectManager.vscode.baseFolders": [
+        "~/development/projects",
+        "~/development/private"
+    ],
+    "projectManager.vscode.ignoredFolders": [
+        "log"
+    ],
+
+    // ============================================================================
+    // TODO & HIGHLIGHTING
+    // ============================================================================
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.highlights.enabled": false,
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "todohighlight.isEnable": true,
+
+    // ============================================================================
+    // SPELL CHECKER
+    // ============================================================================
+    "cSpell.enableFiletypes": [
+        "python"
+    ],
+    "cSpell.ignoreWords": [
+        "psycopg2",
+        "openpyxl",
+        "dateutil",
+        "websockets",
+        "tstamp",
+        "rrule"
+    ],
+    "cSpell.spellCheckOnlyWorkspaceFiles": true,
+
+    // ============================================================================
+    // JUPYTER & NOTEBOOK
+    // ============================================================================
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+
+    // ============================================================================
+    // MARIMO
+    // ============================================================================
+    "marimo.enableToken": true,
+    "marimo.port": 2718,
+    "marimo.pythonPath": "/home/acika/development/venvs/marimo-env/bin/python3",
+
+    // ============================================================================
+    // REMOTE & MISC
+    // ============================================================================
+    "application.shellEnvironmentResolutionTimeout": 30,
+    "geminicodeassist.project": "",
+    "http.proxyAuthorization": null,
+    "launch": {
+        "compounds": [],
+        "configurations": []
+    },
+    "makefile.configureOnOpen": true,
+    "remote.autoForwardPortsSource": "hybrid",
+    "remote.SSH.remotePlatform": {
+        "esm-new-staging": "linux"
+    },
+    "remote.SSH.useLocalServer": false,
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "settingsSync.ignoredExtensions": [],
+    "settingsSync.ignoredSettings": [],
+    "telemetry.telemetryLevel": "off"
+}
