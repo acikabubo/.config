@@ -1,38 +1,200 @@
 // Zed settings
 //
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
+// For information on how to configure Zed, see:
+// https://zed.dev/docs/configuring-zed
 //
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// command palette (cmd-shift-p / ctrl-shift-p)===
 {
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "Gruvbox Light Hard",
-    "dark": "One Dark"
-  },
-  // "hide_mouse": "on_typing",
-  "hide_mouse": "on_typing_and_movement",
-  "wrap_guides": [72],
-  "soft_wrap": "preferred_line_length",
-  "show_wrap_guides": true,
-  "cursor_blink": true,
-  "cursor_shape": "bar",
-  // "relative_line_numbers": true
-  "tab_bar": {
-    "show": true
-  },
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "indent_aware"
-  },
-  "git": {
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": true
+    // === UI & Editor Appearance ===
+    "theme": "Gruvbox Light Hard",
+    "buffer_font_family": "Monaspace Neon",
+    "buffer_font_features": {
+        "calt": true
+    },
+    "buffer_font_size": 16,
+    "buffer_line_height": "comfortable",
+    "buffer_font_weight": 100,
+    "cursor_blink": true,
+    "cursor_shape": "bar",
+    // "icon_theme": "VSCode Icons (Light)",
+    "icon_theme": "Catppuccin Mocha",
+    // "icon_theme": {
+    //     "mode": "system",
+    //     "dark": "Zed (Default)",
+    //     "light": "Zed (Default)"
+    // },
+    "project_panel": {
+        "dock": "left",
+        "drag_and_drop": false,
+        "file_icons": true,
+        "folder_icons": true,
+        "starts_open": true,
+        "sticky_scroll": true
+    },
+    "rounded_selection": true,
+    "scroll_beyond_last_line": "off",
+    "scrollbar": {
+        "show": "always"
+    },
+    "show_whitespaces": "selection",
+    "show_wrap_guides": true,
+    "soft_wrap": "preferred_line_length",
+    "tab_size": 4,
+    // "hard_tabs": false,
+
+    // "ui_font_family": "Consolas",
+    "ui_font_size": 16,
+    "vertical_scroll_margin": 3,
+    "wrap_guides": [72],
+
+    // === Themes & Colors ===
+    // "theme": {
+    //     "mode": "system",
+    //     "light": "Gruvbox Light Hard",
+    //     "dark": "One Dark"
+    // },
+    // "theme": "Everforest Dark Medium",
+    "experimental.theme_overrides": {
+        "syntax": {
+            "keyword": { "color": "#9D70FF" },
+            "function": { "color": "#BCBEC4" }
+        }
+    },
+
+    // === Editing Behavior ===
+    "ensure_final_newline_on_save": true,
+    "format_on_save": "on",
+    "inlay_hints": {
+        "enabled": true
+    },
+    "remove_trailing_whitespace_on_save": true,
+
+    // === Mouse & Navigation ===
+    "hide_mouse": "on_typing_and_movement",
+    "indent_guides": {
+        "enabled": true
+        // "coloring": "indent_aware"
+        // "hover_popover_enabled": true
+    },
+    "tab_bar": {
+        "show": true
+    },
+    "tabs": {
+        "file_icons": true,
+        "git_status": true
+    },
+
+    // === Git Integration ===
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+
+    // === Terminal ===
+    "terminal": {
+        "font_family": "Consolas",
+        "font_size": 14,
+        "blinking": "on",
+        "cursor_shape": "underline",
+        "shell": {
+            "program": "zsh"
+        }
+    },
+
+    // === File Handling ===
+    "autosave": "on_focus_change",
+    "file_scan_exclusions": [
+        "**/*.pyc",
+        "**/.coverage",
+        "**/.directory",
+        "**/.DS_Store",
+        "**/.git",
+        "**/.hg",
+        "**/.noseids",
+        "**/.pytest_cache",
+        "**/.svn",
+        "**/__pycache__",
+        "**/__marimo__",
+        "**/bin",
+        "**/celerybeat-schedule",
+        "**/cover",
+        "**/pg",
+        "*.egg-info",
+        "*.sublime-project",
+        "*.sublime-workspace",
+        ".skjold_cache",
+        "env",
+        "env3",
+        "htmlcov",
+        "include",
+        "log",
+        "man",
+        "pip-selfcheck.json",
+        "project",
+        "share",
+        "test_*.sqlite3"
+    ],
+
+    // === File Associations ===
+    "file_types": {
+        "JSON": ["partial", "schema", "ui.schema"],
+        "TOML": ["toml"]
+    },
+
+    // === Language-specific Settings ===
+    "languages": {
+        "JSON": {
+            "tab_size": 4
+        },
+        "JSONC": {
+            "tab_size": 4
+        },
+        "Python": {
+            "code_actions_on_format": {
+                "source.fixAll": true,
+                "source.organizeImports": true
+            },
+            "format_on_save": "on",
+            "formatter": [
+                { "language_server": { "name": "ruff" } },
+                {
+                    "external": {
+                        "command": "ruff",
+                        "arguments": ["format", "-"]
+                    }
+                },
+                {
+                    "code_actions": {
+                        // Fix all auto-fixable lint violations
+                        "source.fixAll.ruff": true,
+                        // Organize imports
+                        "source.organizeImports.ruff": true
+                    }
+                }
+            ],
+            "hard_tabs": false,
+            "language_servers": ["ty", "ruff", "!basedpyright"],
+            "preferred_line_length": 79,
+            "tab_size": 4
+        }
+    },
+
+    // === LSP Settings ===
+    "lsp": {
+        "ruff": {
+            "initialization_options": {
+                "settings": {
+                    "lineLength": 79,
+                    "lint": {
+                        "select": ["ALL"],
+                        "ignore": ["E128"]
+                    }
+                }
+            }
+        }
     }
-  }
 }

@@ -1,0 +1,15 @@
+{
+    "Create main func": {
+        "prefix": "main",
+        "description": "Create main function",
+        "body": [
+            "package main",
+            "",
+            "${1:import \"fmt\"}",
+            "",
+            "func main() {",
+            "    ${0}",
+            "}"
+        ]
+    }
+}

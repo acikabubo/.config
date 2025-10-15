@@ -1,0 +1,48 @@
+{
+    "Create a __name__ == __main__ check": {
+        "prefix": "main",
+        "description": "Main function template",
+        "body": [
+            "def main() -> None:",
+            "    ${1:...}",
+            "",
+            "",
+            "if __name__ == '__main__':",
+            "    main()",
+            ""
+        ]
+    },
+    "Create a class": {
+        "prefix": "class",
+        "description": "Class template",
+        "body": [
+            "class ${1:...}:",
+            "    def __init__(self, ${2:...}) -> None:",
+            "        ${3:...}"
+        ]
+    },
+    "Create a function": {
+        "prefix": "def",
+        "description": "Function template",
+        "body": [
+            "def ${1:...}(${2:...}) -> ${3:None}:",
+            "    raise NotImplementedError(\"${1:...}() was not implemented...)"
+        ]
+    },
+    "Create async main": {
+        "prefix": "asyncmain",
+        "body": [
+            "import asyncio",
+            "",
+            "async def ${1:...}() -> ${2:None}:",
+            "    print(\"Starting asynchronous task...\")",
+            "    await asyncio.sleep(1)  # Simulate an I/O operation",
+            "    print(\"Asynchronous task completed.\")",
+            "",
+            "if __name__ == \"__main__\":",
+            "    asyncio.run(${1:...}())",
+            "    print(\"Program finished.\")"
+        ],
+        "description": "An example of a simple asyncio function in Python."
+    }
+}
