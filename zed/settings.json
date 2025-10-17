@@ -1,30 +1,19 @@
-// Zed settings
-//
-// For information on how to configure Zed, see:
-// https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)===
 {
     // === UI & Editor Appearance ===
+    "confirm_quit": true,
+    "ui_font_weight": 510.0,
+    "ui_font_family": ".SystemUIFont",
     "theme": "Gruvbox Light Hard",
-    "buffer_font_family": "Monaspace Neon",
+    "buffer_font_family": "Fira Code",
     "buffer_font_features": {
         "calt": true
     },
-    "buffer_font_size": 16,
+    "buffer_font_size": 15.0,
     "buffer_line_height": "comfortable",
-    "buffer_font_weight": 100,
+    "buffer_font_weight": 500.0,
     "cursor_blink": true,
     "cursor_shape": "bar",
-    // "icon_theme": "VSCode Icons (Light)",
-    "icon_theme": "Catppuccin Mocha",
-    // "icon_theme": {
-    //     "mode": "system",
-    //     "dark": "Zed (Default)",
-    //     "light": "Zed (Default)"
-    // },
+    "icon_theme": "VSCode Icons (Light)",
     "project_panel": {
         "dock": "left",
         "drag_and_drop": false,
@@ -40,26 +29,28 @@
     },
     "show_whitespaces": "selection",
     "show_wrap_guides": true,
-    "soft_wrap": "preferred_line_length",
+    // "soft_wrap": "preferred_line_length",
     "tab_size": 4,
-    // "hard_tabs": false,
+    "hard_tabs": false,
 
-    // "ui_font_family": "Consolas",
-    "ui_font_size": 16,
+    "ui_font_size": 17.0,
     "vertical_scroll_margin": 3,
-    "wrap_guides": [72],
+    "wrap_guides": [72, 79],
 
     // === Themes & Colors ===
-    // "theme": {
-    //     "mode": "system",
-    //     "light": "Gruvbox Light Hard",
-    //     "dark": "One Dark"
-    // },
-    // "theme": "Everforest Dark Medium",
     "experimental.theme_overrides": {
         "syntax": {
             "keyword": { "color": "#9D70FF" },
-            "function": { "color": "#BCBEC4" }
+            "function": {
+                // "color": "#BCBEC4",
+                "font_weight": 600
+            },
+            "comment": {
+                "color": "#BCBEC4"
+            },
+            "comment.doc": {
+                "color": "#BCBEC4"
+            }
         }
     },
 
@@ -67,21 +58,25 @@
     "ensure_final_newline_on_save": true,
     "format_on_save": "on",
     "inlay_hints": {
-        "enabled": true
+        "enabled": true,
+        "toggle_on_modifiers_press": {
+            "control": false,
+            "alt": true
+        }
     },
     "remove_trailing_whitespace_on_save": true,
 
     // === Mouse & Navigation ===
     "hide_mouse": "on_typing_and_movement",
     "indent_guides": {
-        "enabled": true
-        // "coloring": "indent_aware"
-        // "hover_popover_enabled": true
+        "enabled": true,
+        "coloring": "indent_aware"
     },
     "tab_bar": {
         "show": true
     },
     "tabs": {
+        "show_diagnostics": "all",
         "file_icons": true,
         "git_status": true
     },
@@ -154,25 +149,26 @@
             "tab_size": 4
         },
         "Python": {
-            "code_actions_on_format": {
-                "source.fixAll": true,
-                "source.organizeImports": true
-            },
             "format_on_save": "on",
             "formatter": [
-                { "language_server": { "name": "ruff" } },
                 {
-                    "external": {
-                        "command": "ruff",
-                        "arguments": ["format", "-"]
+                    "code_action": "source.fixAll"
+                },
+                {
+                    "code_action": "source.organizeImports"
+                },
+                {
+                    "code_action": "source.fixAll.ruff"
+                },
+                {
+                    "language_server": {
+                        "name": "ruff"
                     }
                 },
                 {
-                    "code_actions": {
-                        // Fix all auto-fixable lint violations
-                        "source.fixAll.ruff": true,
-                        // Organize imports
-                        "source.organizeImports.ruff": true
+                    "external": {
+                        "command": "ruff",
+                        "arguments": ["format", "--line-length", "79", "-"]
                     }
                 }
             ],
@@ -180,6 +176,15 @@
             "language_servers": ["ty", "ruff", "!basedpyright"],
             "preferred_line_length": 79,
             "tab_size": 4
+        },
+        "Rust": {
+            "formatter": {
+                "external": {
+                    "command": "rustfmt",
+                    "arguments": []
+                }
+            },
+            "format_on_save": "on"
         }
     },
 
@@ -188,10 +193,8 @@
         "ruff": {
             "initialization_options": {
                 "settings": {
-                    "lineLength": 79,
                     "lint": {
-                        "select": ["ALL"],
-                        "ignore": ["E128"]
+                        "select": ["ALL"]
                     }
                 }
             }

@@ -1,9 +1,6 @@
-//
-// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
-//
 [
     {
-        "label": "Python uses: run",
+        "label": "Python: run",
         "command": "python3",
         "args": ["$ZED_FILE"],
         "use_new_terminal": false,
@@ -15,5 +12,12 @@
         "args": ["run", "$ZED_FILE"],
         "use_new_terminal": false,
         "allow_concurrent_runs": true
+    },
+    {
+        "label": "Create temp virtual environment",
+        "command": "VIRTUALENVWRAPPER_PYTHON=$(which python3)source $(which virtualenvwrapper.sh) && mktmpenv && $SHELL",
+        "use_new_terminal": true,
+        "allow_concurrent_runs": true,
+        "reveal": "always"
     }
 ]

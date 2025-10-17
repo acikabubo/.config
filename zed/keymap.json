@@ -6,7 +6,8 @@
             "ctrl-alt-down": "editor::DuplicateLineDown",
             "ctrl-u": "editor::DeleteToBeginningOfLine",
             "ctrl-k": "editor::DeleteToEndOfLine",
-            "ctrl-shift-t": "workspace::NewTerminal"
+            "ctrl-shift-t": "workspace::NewTerminal",
+            "ctrl-i": "editor::ToggleInlayHints"
         }
     },
     {
@@ -19,6 +20,12 @@
         "context": "Editor && extension == go",
         "bindings": {
             "ctrl-r": ["task::Spawn", { "task_name": "Go: run" }]
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"]
         }
     }
 ]
