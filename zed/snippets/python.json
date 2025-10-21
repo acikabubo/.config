@@ -1,4 +1,61 @@
 {
+     "Here": {
+        "prefix": "here",
+        "description": "Print a HERE marker for debugging checkpoints",
+        "body": ["print()", "print('HERE')", "print()"]
+    },
+    "Print Here": {
+        "prefix": "phere",
+        "description": "Print a custom HERE message for debugging",
+        "body": ["print(f'HERE ${1}')"]
+    },
+    "Pretty Print": {
+        "prefix": "pprint",
+        "description": "Pretty print an object with spacing before and after",
+        "body": [
+            "from pprint import pprint",
+            "print()",
+            "pprint(${1})",
+            "print()"
+        ]
+    },
+    "Print - 80": {
+        "prefix": "print80",
+        "description": "Print a line of 80 dashes around a value for visual separation",
+        "body": ["print('-' * 80)", "print(${1})", "print('-' * 80)"]
+    },
+    "Three Prints": {
+        "prefix": "print3",
+        "description": "Print three lines with a variable or value in the middle",
+        "body": ["print()", "print(${1})", "print()", "${2}"]
+    },
+    "Five Prints": {
+        "prefix": "print5",
+        "description": "Print five lines with centered output for visual separation",
+        "body": [
+            "print()",
+            "print()",
+            "print(${1})",
+            "print()",
+            "print()",
+            "${2}"
+        ]
+    },
+    "Print Exception Traceback": {
+        "prefix": "trb",
+        "description": "Print the current exception traceback using the traceback module",
+        "body": ["import traceback", "traceback.print_exc()"]
+    },
+    "Print SQL Query": {
+        "prefix": "sqlqueryprint",
+        "description": "Print a compiled SQLAlchemy query for inspection",
+        "body": [
+            "from sqlalchemy.dialects import postgresql",
+            "print()",
+            "print(${1}.compile(dialect=postgresql.dialect()))",
+            "print()"
+        ]
+    },
     "Create a __name__ == __main__ check": {
         "prefix": "main",
         "description": "Main function template",
