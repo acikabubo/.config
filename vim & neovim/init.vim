@@ -1,4 +1,4 @@
-# ~/.config/nvim/init.vim
+" ~/.config/nvim/init.vim
 syntax on " Enable syntax highlighting
 set number " Show line numbers
 set relativenumber " Show relative line numbers

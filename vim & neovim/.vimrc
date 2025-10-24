@@ -1,4 +1,4 @@
-# ~/.vimrc 
+" ~/.vimrc 
 syntax on " Enable syntax highlighting
 set number " Show line numbers
 set relativenumber " Show relative line numbers
