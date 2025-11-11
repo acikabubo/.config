@@ -1,3 +1,11 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+
 [
     {
         "context": "Editor",
@@ -26,6 +34,12 @@
         "context": "Terminal",
         "bindings": {
             "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"]
+        }
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-l ctrl-m": "language_selector::Toggle"
         }
     }
 ]

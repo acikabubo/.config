@@ -35,5 +35,10 @@
     {
         "key": "ctrl+k",
         "command": "deleteAllRight"
+    },
+    {
+        "key": "ctrl+l ctrl+m",
+        "command": "workbench.action.editor.changeLanguageMode",
+        "when": "!notebookEditorFocused"
     }
 ]
