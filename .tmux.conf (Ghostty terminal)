@@ -1,0 +1,104 @@
+# ============================================================================
+# TMUX Configuration
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# General Settings
+# ----------------------------------------------------------------------------
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+set -g history-limit 3000
+set -g base-index 1
+
+# ----------------------------------------------------------------------------
+# Key Bindings
+# ----------------------------------------------------------------------------
+
+# Change prefix from 'C-b' to 'Insert'
+unbind C-b
+set-option -g prefix IC
+bind-key IC send-prefix
+
+# Split panes
+bind | split-window -h -c "#{pane_current_path}"
+bind _ split-window -v -c "#{pane_current_path}"
+unbind '"'
+unbind %
+
+# Rename window
+unbind ,
+bind r command-prompt 'rename-window %%'
+
+# Rename session
+bind R command-prompt 'rename-session %%'
+
+# Zoom in/out current pane
+unbind +
+bind + \
+  new-window -d -n tmux-zoom 'clear && echo TMUX ZOOM && read' \;\
+  swap-pane -s tmux-zoom.0 \;\
+  select-window -t tmux-zoom
+
+unbind -
+bind - \
+  last-window \;\
+  swap-pane -s tmux-zoom.0 \;\
+  kill-window -t tmux-zoom
+
+# ----------------------------------------------------------------------------
+# Mouse Settings
+# ----------------------------------------------------------------------------
+
+# Toggle mouse on
+bind M \
+  set -g mouse on \;\
+  display '>>> Mouse: ON'
+
+# Toggle mouse off
+bind m \
+  set -g mouse off \;\
+  display '>>> Mouse: OFF'
+
+# ----------------------------------------------------------------------------
+# Status Bar - Green Theme with Lighter Background
+# ----------------------------------------------------------------------------
+set -g status-position bottom
+set -g status-justify left
+set -g status-style bg=colour240,fg=colour250
+
+# Left side: Session name
+set -g status-left '#[fg=colour233,bg=colour244,bold] #S #[fg=colour244,bg=colour240]'
+set -g status-left-length 20
+
+# Right side: Date and time
+set -g status-right '#[fg=colour233,bg=colour243] %d %b #[fg=colour233,bg=colour246] %H:%M:%S '
+set -g status-right-length 50
+
+# Window status - GREEN theme
+setw -g window-status-format '#[fg=colour250] #I #W '
+setw -g window-status-current-format '#[fg=colour233,bg=colour35,bold] #I #W#{?window_zoomed_flag, 🔍, } '
+
+# Pane borders - GREEN
+set -g pane-border-style fg=colour243
+set -g pane-active-border-style fg=colour35
+
+# Message style - GREEN
+set -g message-style bg=colour35,fg=colour232,bold
+
+# ----------------------------------------------------------------------------
+# Window Appearance
+# ----------------------------------------------------------------------------
+set -g window-style 'bg=default'
+set -g window-active-style 'bg=default'
+
+# ----------------------------------------------------------------------------
+# Plugins
+# ----------------------------------------------------------------------------
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom)
+run '~/.tmux/plugins/tpm/tpm'
