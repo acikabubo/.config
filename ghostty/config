@@ -1,7 +1,8 @@
 # ~/.config/ghostty/config
 
 # ghostty +list-themes
-theme = catppuccin-frappe
+# theme = catppuccin-frappe (probably should be removed)
+theme = Catppuccin Frappe
 
 # ghostty +list-keybinds
 keybind = ctrl+up=new_split:up
