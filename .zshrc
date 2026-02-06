@@ -196,12 +196,6 @@ alias docker-machine='rancher-machine'
 # Set alias for lazydocker
 alias lzd='lazydocker'
 
-# VPN's
-alias up-ved='sudo wg-quick up ved'
-alias down-ved='sudo wg-quick down ved'
-alias up-sasa='sudo wg-quick up sasa'
-alias down-sasa='sudo wg-quick down sasa'
-
 # Git
 export GIT_PAGER=cat
 

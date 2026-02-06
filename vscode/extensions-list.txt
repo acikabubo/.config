@@ -8,7 +8,6 @@ docker.docker
 donjayamanne.githistory
 eamodio.gitlens
 fill-labs.dependi
-github.copilot
 github.copilot-chat
 github.github-vscode-theme
 golang.go
@@ -48,15 +47,11 @@ ms-windows-ai-studio.windows-ai-studio
 ritwickdey.liveserver
 rust-lang.rust-analyzer
 softwaredotcom.swdc-vscode
-sourcegraph.cody-ai
 streetsidesoftware.code-spell-checker
 tamasfe.even-better-toml
 teamsdevapp.vscode-ai-foundry
 tomoyukim.vscode-mermaid-editor
 usernamehw.errorlens
-visualstudioexptteam.intellicode-api-usage-examples
-visualstudioexptteam.vscodeintellicode
-visualstudioexptteam.vscodeintellicode-completions
 vscode-icons-team.vscode-icons
 vscodevim.vim
 wayou.vscode-todo-highlight

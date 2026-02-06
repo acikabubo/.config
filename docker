@@ -1,0 +1,30 @@
+Docker with XFS is an excellent combination:
+Docker benefits with XFS:
+
+Docker's overlay2 storage driver works great with XFS
+Handles many container layers efficiently
+Better performance with image pulls/builds (lots of metadata operations)
+Excellent for Docker volumes with databases (PostgreSQL, etc.)
+Handles the constant file creation/deletion from container churn very well
+XFS's parallel I/O shines when running multiple containers
+
+# After installation, before installing Docker:
+sudo mkdir -p /home/docker
+sudo ln -s /home/docker /var/lib/docker
+
+# Then install Docker
+sudo zypper install docker
+sudo systemctl enable docker
+sudo systemctl start docker
+
+Alternative (even simpler):
+If you want to do it after Docker is already installed:
+sudo systemctl stop docker
+sudo mv /var/lib/docker /home/docker
+sudo ln -s /home/docker /var/lib/docker
+sudo systemctl start docker
+
+# Run docker without sudo
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
