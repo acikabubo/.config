@@ -1,78 +1,127 @@
-# Configuration Files
+# Dotfiles Repository
 
-## 📝 VS Code Editor
+Personal configuration files for development environment.
 
-| Type | File |
-|------|------|
-| Settings | [settings.json](vscode/settings.json) |
-| Keybindings | [keybindings.json](vscode/keybindings.json) |
-| Snippets | [python.json](vscode/snippets/python.json) · [rust.json](vscode/snippets/rust.json) |
-| Extensions | [extensions-list.txt](vscode/extensions-list.txt)
+## 📁 Repository Structure
 
-### File locations
 ```
-~/.config/Code/User/settings.json
-~/.config/Code/User/keybindings.json
-~/.config/Code/User/snippets/python.json
-~/.config/Code/User/snippets/rust.json
+.
+├── shell/              # Shell configurations
+│   ├── zshrc          # Zsh configuration → ~/.zshrc
+│   └── oh-my-zsh/     # Oh My Zsh related files
+│
+├── terminal/          # Terminal and multiplexer
+│   ├── ghostty/       # Ghostty terminal
+│   │   └── config     # → ~/.config/ghostty/config
+│   └── tmux/          # Tmux configurations
+│       ├── tmux.conf          # Standard → ~/.tmux.conf
+│       └── tmux-ghostty.conf  # Ghostty-optimized (alternative)
+│
+├── editors/           # Editor configurations
+│   ├── vscode/        # VSCode → ~/.config/Code/User/
+│   │   ├── settings.json
+│   │   ├── keybindings.json
+│   │   ├── snippets/
+│   │   ├── extensions-list.txt
+│   │   └── Makefile
+│   ├── zed/           # Zed → ~/.config/zed/
+│   │   ├── settings.json
+│   │   ├── keymap.json
+│   │   ├── tasks.json
+│   │   └── snippets/
+│   └── vim/           # Vim/Neovim
+│       ├── vimrc      # → ~/.vimrc
+│       └── init.vim   # → ~/.config/nvim/init.vim
+│
+├── fonts/             # Font files
+│   ├── consolas-fonts-ttf.tar.gz
+│   ├── FiraCode.tar.gz
+│   └── README.md
+│
+├── setup/             # Setup and installation guides
+│   ├── docker-setup.md
+│   ├── rust-setup.md
+│   └── tmux-plugins.md
+│
+├── deploy.sh          # Automated deployment script
+├── CLAUDE.md          # AI assistant instructions
+└── README.md          # This file
 ```
 
-To list all installed extensions execute:
+## 🚀 Quick Start
+
+### Deploy All Configurations
+
 ```bash
-code --list-extensions
+# Interactive deployment (creates backups)
+./deploy.sh
+
+# Force deployment (no backups)
+./deploy.sh --force
 ```
 
-## 📝 Zed Editor
+The deployment script will:
+- Create necessary directories
+- Backup existing configurations
+- Create symlinks from repository to system locations
+- Prompt for tmux configuration choice
 
-### Configuration Files
-| Type | File |
-|------|------|
-| Settings | [settings.json](zed/settings.json) |
-| Keymap | [keymap.json](zed/keymap.json) |
-| Snippets | [python.json](zed/snippets/python.json) · [go.json](zed/snippets/go.json) |
-| Tasks | [tasks.json](zed/tasks.json) |
+### Manual Deployment
 
-### File Locations
+See [CLAUDE.md](CLAUDE.md) for detailed file mappings and manual deployment instructions.
+
+## 🔧 Components
+
+### Shell (Zsh)
+- **Theme**: eastwood (Oh My Zsh)
+- **Custom alias**: `zs` to reload configuration
+- **History**: Smart filtering, space-prefixed commands ignored
+
+### Terminal (Ghostty)
+- **Theme**: Catppuccin Frappe
+- **Splits**: `Ctrl+Up/Down/Left/Right`
+
+### Multiplexer (Tmux)
+- **Prefix**: `Insert` key (not `Ctrl+b`)
+- **Splits**: `|` horizontal, `_` vertical
+- **Mouse**: `<prefix> + M/m` toggle
+- **Plugins**: TPM, sidebar, resurrect, continuum, prefix-highlight
+
+### Editors
+- **VSCode**: Settings, keybindings, snippets (Python, Rust)
+- **Zed**: Settings, keymap, tasks, snippets (Python, Go)
+- **Vim/Neovim**: Shared minimal configuration
+
+## 📚 Additional Resources
+
+- [CLAUDE.md](CLAUDE.md) - Comprehensive guide for working with this repository
+- [setup/](setup/) - Installation guides for Docker, Rust, and tmux plugins
+- [fonts/](fonts/) - Font installation files
+
+## 🛠️ Common Tasks
+
+### VSCode Extensions
+```bash
+cd editors/vscode
+make freeze-extensions    # Save current extensions
+make install-extensions   # Install from list
 ```
-~/.config/zed/settings.json
-~/.config/zed/keymap.json
-~/.config/zed/snippets/python.json
-~/.config/zed/snippets/go.json
-~/.config/zed/tasks.json
+
+### Tmux Plugins
+```bash
+# Install TPM first
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Then in tmux: <prefix> + I to install plugins
 ```
 
----
+### Reload Configurations
+```bash
+# Zsh
+source ~/.zshrc
+# or
+zs
 
-## 🖥️ Tmux
-
-### Configuration
-- [.tmux.conf](.tmux.conf)
-
-### File Location
-```
-~/.tmux.conf
-```
-
----
-
-## 🐚 Zsh
-
-### Configuration
-- [.zshrc](.zshrc)
-
-### File Location
-```
-~/.zshrc
-```
-
----
-
-## 👻 Ghostty
-
-### Configuration
-- [config](ghostty/config)
-
-### File Location
-```
-~/.config/ghostty/config
+# Tmux (from within tmux)
+tmux source ~/.tmux.conf
 ```

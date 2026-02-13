@@ -9,8 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="cobalt2"
-# ZSH_THEME="arrow"
 ZSH_THEME="eastwood"
 
 # Set list of themes to pick from when loading at random
@@ -73,12 +71,11 @@ ZSH_THEME="eastwood"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-autosuggestions sudo suse tmux extract copypath copyfile copybuffer dirhistory zsh_reload)
+plugins=(git zoxide zsh-autosuggestions sudo suse tmux extract copypath copyfile copybuffer dirhistory)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-# PS1='%n@%m %1~ %# '
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -89,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -118,28 +115,13 @@ HISTORY_IGNORE="dim|dca|git s|git b|git co *|git add *|git commit -m *|docker rm
 # No write wrong command in history
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias zshconfig="subl ~/.zshrc"
+# User aliases
+alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias zs="source ~/.zshrc"
 
@@ -148,7 +130,8 @@ export WORKON_HOME=~/development/venvs/
 export PROJECT_HOME=~/development/projects/
 export VIRTUALENVWRAPPER_PYTHON=`which python3`
 # source /usr/local/bin/virtualenvwrapper.sh
-source virtualenvwrapper.sh
+# source virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper
 
 # System default Python need to be found before the Anaconda version
 export PATH="/usr/bin:$PATH"
@@ -178,9 +161,15 @@ alias dcr='docker-compose run --rm'
 alias dcd='docker compose down'
 
 # Set alias for starting portainer
-alias startportainer='docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -l portainer.hide=true portainer/portainer-ce:latest | docker start portainer'
-# Set alias for starting golang docker container
-alias godocker='docker run --rm -it -v /home/acika/development/workspace/go:/go -p 8080:8080 --hostname go-host --name golang acikabubo/go'
+alias startportainer='docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock:z -v portainer_data:/data -l portainer.hide=true portainer/portainer-ce:latest | docker start portainer'
+alias portainer-start='docker run -d -p 9000:9000 --name portainer \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock:z \
+  -v portainer_data:/data \
+  --group-add 460 \
+  --security-opt label=disable \
+  -l portainer.hide=true \
+  portainer/portainer-ce:latest'
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=cyan"
 
@@ -199,19 +188,15 @@ alias lzd='lazydocker'
 # Git
 export GIT_PAGER=cat
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# opencode
+export PATH=/home/acika/.opencode/bin:$PATH
 
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+. "$HOME/.local/share/../bin/env"
+export PATH="$HOME/.local/bin:$PATH"
+
+# bun completions
+[ -s "/home/acika/.bun/_bun" ] && source "/home/acika/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

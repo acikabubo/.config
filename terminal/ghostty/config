@@ -1,0 +1,13 @@
+# ~/.config/ghostty/config
+
+# ghostty +list-themes
+# theme = catppuccin-frappe (probably should be removed)
+theme = Catppuccin Frappe
+
+# ghostty +list-keybinds
+keybind = ctrl+up=new_split:up
+keybind = ctrl+down=new_split:down
+keybind = ctrl+left=new_split:left
+keybind = ctrl+right=new_split:right
+
+# ghostty +list-fonts
