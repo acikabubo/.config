@@ -200,3 +200,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Automatically add SSH key to agent on first terminal open
+if [ -n "$SSH_AUTH_SOCK" ]; then
+    ssh-add -l &>/dev/null
+    if [ $? -eq 1 ]; then
+        SSH_ASKPASS="" ssh-add /home/acika/.ssh/id_ed25519
+    fi
+fi
